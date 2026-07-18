@@ -8,6 +8,7 @@ pipeline {
                 bat """
                 cd MY_project
                 C:\\Users\\yanam\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -m pip install -r requirements.txt
+                docker built -t sai
                 """
             }
         }
@@ -17,6 +18,7 @@ pipeline {
                 bat """
                 cd MY_project
                 C:\\Users\\yanam\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -m pytest -v
+                docker run --rm sai
                 """
             }
         }

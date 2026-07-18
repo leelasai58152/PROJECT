@@ -6,7 +6,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 bat """
-                cd SwagLabs_Automation
+                cd MY_project
                 C:\\Users\\yanam\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -m pip install -r requirements.txt
                 """
             }
@@ -15,7 +15,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 bat """
-                cd SwagLabs_Automation
+                cd MY_project
                 C:\\Users\\yanam\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -m pytest -v
                 """
             }
@@ -28,7 +28,7 @@ pipeline {
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
                 keepAll: true,
-                reportDir: 'SwagLabs_Automation/reports',
+                reportDir: 'MY_project/reports',
                 reportFiles: 'report.html',
                 reportName: 'PyTest HTML Report'
             ])

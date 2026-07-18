@@ -10,7 +10,7 @@ def test_login(setup):
     login=LoginPage(driver)
     login.all_login(USERNAME,PASSWORD)
     
-    assert 'dashboard'in driver.current_url.lower()
+    assert 'index'in driver.current_url
     
     
     

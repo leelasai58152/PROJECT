@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Install Dependencies') {
+            steps {
+                bat """
+                cd MY_project
+                C:\\Users\\yanam\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -m pip install -r requirements.txt
+                """
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                bat """
+                cd MY_project
+                C:\\Users\\yanam\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -m pytest -v
+                """
+            }
+        }
+    }
+
+    post {
+        always {
+            publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'MY_project\reports',
+                reportFiles: 'report.html',
+                reportName: 'PyTest HTML Report'
+            ])
+        }
+    }
+}
